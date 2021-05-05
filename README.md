@@ -1,2 +1,2 @@
 # utils
-Small functions i uses to move on from jQuery
+Small methods i use to move on from jQuery
