@@ -52,13 +52,29 @@ window.app = (() => {
         }
 
         /**
+         * Attach event to elems in NodeList
+         * @param {string} event - Event name
+         * @param {NodeList} elements - NodeList
+         * @param {function} fn - function to execute
+         */
+        static nodesEventListener(event, elements, fn){
+            Array.prototype.forEach.call(elements, (el,i) => {
+                el.addEventListener(event, fn);
+            });
+        }
+
+
+
+        /**
          * Debounce a function
          * @param {function} fn - Function to execute
          * @param {number} delay - Timeout delay
          */
         static debounce(fn, delay = 250){
             let timer = false;
+            console.log('before');
             return () => {
+                console.log('here');
                 clearTimeout(timer);
                 timer = setTimeout(() => {
                     fn();
@@ -92,6 +108,7 @@ window.app = (() => {
     app.nodesEach = appUtils.nodesEach;
     app.nodesAddClass = appUtils.nodesAddClass;
     app.nodesRemoveClass = appUtils.nodesRemoveClass;
+    app.nodesEventListener = appUtils.nodesEventListener;
     app.throttle = appUtils.throttle;
     app.debounce = appUtils.debounce;
 
