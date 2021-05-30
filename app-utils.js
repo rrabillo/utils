@@ -59,7 +59,7 @@ window.app = (() => {
          */
         static nodesEventListener(event, elements, fn){
             Array.prototype.forEach.call(elements, (el,i) => {
-                el.addEventListener(event, fn);
+                el.addEventListener(event, fn.bind(this, el, i));
             });
         }
 
@@ -114,4 +114,3 @@ window.app = (() => {
 
     return app;
 })();
-
