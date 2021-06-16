@@ -72,9 +72,7 @@ window.app = (() => {
          */
         static debounce(fn, delay = 250){
             let timer = false;
-            console.log('before');
             return () => {
-                console.log('here');
                 clearTimeout(timer);
                 timer = setTimeout(() => {
                     fn();
