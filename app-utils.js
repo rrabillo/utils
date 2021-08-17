@@ -52,6 +52,18 @@ window.app = (() => {
         }
 
         /**
+         * Remove class to all element from a NodeList
+         * @param {NodeList} elements - NodeList
+         * @param {string} className - Class to toggle
+         */
+        static nodesToggleClass(elements, className){
+            Array.prototype.forEach.call(elements, (el, i) => {
+                el.classList.toggle(className);
+            });
+        }
+
+
+        /**
          * Attach event to elems in NodeList
          * @param {string} event - Event name
          * @param {NodeList} elements - NodeList
@@ -106,6 +118,7 @@ window.app = (() => {
     app.nodesEach = appUtils.nodesEach;
     app.nodesAddClass = appUtils.nodesAddClass;
     app.nodesRemoveClass = appUtils.nodesRemoveClass;
+    app.nodesToggleClass = appUtils.nodesToggleClass();
     app.nodesEventListener = appUtils.nodesEventListener;
     app.throttle = appUtils.throttle;
     app.debounce = appUtils.debounce;
