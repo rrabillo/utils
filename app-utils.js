@@ -118,7 +118,7 @@ window.app = (() => {
     app.nodesEach = appUtils.nodesEach;
     app.nodesAddClass = appUtils.nodesAddClass;
     app.nodesRemoveClass = appUtils.nodesRemoveClass;
-    app.nodesToggleClass = appUtils.nodesToggleClass();
+    app.nodesToggleClass = appUtils.nodesToggleClass;
     app.nodesEventListener = appUtils.nodesEventListener;
     app.throttle = appUtils.throttle;
     app.debounce = appUtils.debounce;
