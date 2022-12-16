@@ -119,7 +119,7 @@ window.app = (() => {
     app.nodesEventListener = appUtils.nodesEventListener;
     app.throttle = appUtils.throttle;
     app.debounce = appUtils.debounce;
-    app.createElement = appUtils.createElement();
+    app.createElement = appUtils.createElement;
 
     return app;
 })();
