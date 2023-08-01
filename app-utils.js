@@ -107,6 +107,41 @@ window.app = (() => {
                 }
             }
         }
+
+        /**
+         * Keep focus in an element when using tab
+         * @param {Node} element - Dom Node
+         */
+        static keepFocus(element){
+            let focusableEls = element.querySelectorAll('.focusable, a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+            let firstFocusableEl = focusableEls[0];
+            let lastFocusableEl = focusableEls[focusableEls.length - 1];
+            let KEYCODE_TAB = 9;
+
+            setTimeout(function () {
+                firstFocusableEl.focus();
+            }, 250)
+
+            element.addEventListener('keydown', function(e) {
+                var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+                if (!isTabPressed) {
+                    return;
+                }
+
+                if ( e.shiftKey ) /* shift + tab */ {
+                    if (document.activeElement === firstFocusableEl) {
+                        lastFocusableEl.focus();
+                        e.preventDefault();
+                    }
+                } else /* tab */ {
+                    if (document.activeElement === lastFocusableEl) {
+                        firstFocusableEl.focus();
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
     }
 
     const app = element =>  new appUtils(element);
@@ -120,6 +155,7 @@ window.app = (() => {
     app.throttle = appUtils.throttle;
     app.debounce = appUtils.debounce;
     app.createElement = appUtils.createElement;
+    app.keepFocus = appUtils.keepFocus;
 
     return app;
 })();
